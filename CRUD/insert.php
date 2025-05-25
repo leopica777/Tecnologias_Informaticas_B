@@ -1,5 +1,8 @@
 <?php
 include 'config.php';
+/*CREATE.PHP o INSERT.PHP
+    Permite agregar nuevos registros a la BD.
+*/
 
 /**
  * $_SERVER con esta "super-global" detecto con qué método
@@ -7,14 +10,19 @@ include 'config.php';
  * https://www.php.net/manual/es/reserved.variables.request.php
  * https://www.php.net/manual/es/language.variables.superglobals.php 
  */
+
+/*EL CLIENTE MANDA UNA SOLICITUD POST CON LOS DATOS QUE SE DESEAN AGREGAR (JSON)
+*/
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['fullname'];
     $email = $_POST['email'];
     $age = $_POST['age'];
-
+    
+    /*El servidor recibe la solicitud y la procesa, creando un nuevo registro en la BD*/
     $sql = "INSERT INTO students (fullname, email, age)
             VALUES ('$name', '$email', $age)";
 
+    /*El servidor responde con el objeto creado, generalmente con un codigo de estado HTTP*/
     if ($connection->query($sql) === TRUE) {
         /**
          * la función header redirige a la página principal index.php
