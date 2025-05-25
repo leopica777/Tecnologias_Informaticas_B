@@ -1,22 +1,25 @@
 <?php
-include 'config.php';
+/*UPDATE.PHP
+Permite modificar un registro existente en la BD
+*/
+include 'config.php'; //INCLUYE ARCHIVO CONFIG.PHP
 
-$id = $_GET['id'];
-$result = $connection->query("SELECT * FROM students WHERE id = $id");
-$row = $result->fetch_assoc();
+$id = $_GET['id']; //TOMA EL ID DEL ESTUDIANTE DESDE LA URL
+$result = $connection->query("SELECT * FROM students WHERE id = $id"); //CONSULTA SQL PARA ENCONTRAR AL ESTUDIANTE CON ESE ID
+$row = $result->fetch_assoc(); //EXTRAE ESA FILA COMO ARRAY ASOCIATIVO
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['fullname'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") { //VERIFICA SI EL FORMULARIO FUE ACTUALIZADO
+    $name = $_POST['fullname']; //TOMA VALORES ENVIADOS POR EL FORMULARIO
     $email = $_POST['email'];
     $age = $_POST['age'];
 
-    $sql = "UPDATE students SET fullname='$name', email='$email', age=$age WHERE id=$id";
+    $sql = "UPDATE students SET fullname='$name', email='$email', age=$age WHERE id=$id"; //PREPARA CONSULTA SQL UPDATE PARA MODIFICAR LOS DATOS DEL ESTUDIANTE
 
-    if ($connection->query($sql) === TRUE) {
-        header("Location: index.php");
+    if ($connection->query($sql) === TRUE) { //EJECUTA LA CONSULTA
+        header("Location: index.php"); //REDIRIGE A INDEX
         exit;
     } else {
-        echo "Error al actualizar: " . $connection->error;
+        echo "Error al actualizar: " . $connection->error; //ERROR SI FALLA EL UPDATE
     }
 }
 ?>
