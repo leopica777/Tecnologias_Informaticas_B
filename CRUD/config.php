@@ -1,4 +1,7 @@
 <?php
+/*CONFIG.PHP
+    Configura y establece una conexion con la BD MYSQL
+*/
 /**
  * Datos de conexión: en variables en php.
  */
@@ -9,13 +12,7 @@ $database = "students_db";
 
 /**
  * $connection "variable", objeto instancia de mysqli
- * La extensión mysqli (mysql improved) permite acceder 
- * a la funcionalidad proporcionada por MySQL 4.1 y posterior. 
- * Se puede encontrar más información sobre el servidor de base 
- * de datos MySQL en » http://www.mysql.com/
- * 
- * instancio una conexión a la base de datos con las variables
- * definidas arriba.
+ Crea un nuevo objeto mysqli y establece la conexión usando las credenciales anteriores.
  */
 $connection = new mysqli($host, $user, $password, $database);
 
