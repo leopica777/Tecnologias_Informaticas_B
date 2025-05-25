@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include 'config.php'; //INCLUYE CONFIG.PHP
 /*CREATE.PHP o INSERT.PHP
     Permite agregar nuevos registros a la BD.
 */
@@ -13,25 +13,26 @@ include 'config.php';
 
 /*EL CLIENTE MANDA UNA SOLICITUD POST CON LOS DATOS QUE SE DESEAN AGREGAR (JSON)
 */
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['fullname'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") { //VERIFICA QUE EL FORMULARIO FUE ENVIADO POR POST
+    $name = $_POST['fullname']; //RECIBE LOS DATOS ENVIADOS DEL FORMULARIO Y GUARDA EN VARIABLES
     $email = $_POST['email'];
     $age = $_POST['age'];
     
     /*El servidor recibe la solicitud y la procesa, creando un nuevo registro en la BD*/
-    $sql = "INSERT INTO students (fullname, email, age)
+    //ARMA CONSULTA SQL INSERT PARA AGREGAR A UN NUEVO ESTUDIANTE EN LA TABLA
+    $sql = "INSERT INTO students (fullname, email, age) 
             VALUES ('$name', '$email', $age)";
 
     /*El servidor responde con el objeto creado, generalmente con un codigo de estado HTTP*/
-    if ($connection->query($sql) === TRUE) {
+    if ($connection->query($sql) === TRUE) { //SI SE EJECUTA BIEN INSERTA LA CONSULTA
         /**
          * la función header redirige a la página principal index.php
          * de lo contrario recargaría la misma página.
          */
-        header("Location: index.php"); 
+        header("Location: index.php"); //REDIRIGE A LA PAGINA PRINCIPAL INDEX
         exit;
     } else {
-        echo "Error al insertar: " . $connection->error;
+        echo "Error al insertar: " . $connection->error; //ERROR SE MUESTRA POR PANTALLA
     }
 }
 ?>
