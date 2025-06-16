@@ -9,51 +9,53 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon.png">
   <link rel="stylesheet" href="../css/w3.css" />
   <link rel="stylesheet" href="../css/styles.css" />
-  <script type="module" src="../js/controllers/studentsController.js"></script>
+  <script type="module" src="../js/controllers/studentsController.js"></script> <!-- IMPORTA EL ARCHIVO a JS -->
 </head>
 
 <body class="w3-container">
 
   <h2 class="w3-center w3-margin-top">Gestión de Estudiantes</h2>
 
-  <form id="studentForm" class="w3-card w3-padding w3-margin-bottom w3-light-grey">
-    <input type="hidden" id="studentId" />
+  <form id="studentForm" class="w3-card w3-padding w3-margin-bottom w3-light-grey"> <!-- Formulario del estudiante con id. no se llenan method ni action ya que se maneja desde studentscontroller.js  -->
+    <input type="hidden" id="studentId" /> <!--  Se usa para saber si se esta editando un estudiante existente o creando uno-->
 
-    <div class="w3-row-padding">
-      <div class="w3-third">
+    <div class="w3-row-padding"> <!--  contenedor para agrupar 3 campos en una fila con espaciado-->
+      <div class="w3-third"> <!--  divide el ancho en 3 columnas-->
         <label>Nombre completo</label>
-        <input class="w3-input" type="text" id="fullname" required />
+        <input class="w3-input" type="text" id="fullname" required /> <!--  nombre completo obligatorio-->
       </div>
       <div class="w3-third">
         <label>Email</label>
-        <input class="w3-input" type="email" id="email" required />
+        <input class="w3-input" type="email" id="email" required /> <!--  campo tipo email. el navegador verifica que sea un email obligatorio-->
       </div>
       <div class="w3-third">
         <label>Edad</label>
-        <input class="w3-input" type="number" id="age" required />
+        <input class="w3-input" type="number" id="age" required /> <!--  campo tipo numero para la edad obligatorio-->
       </div>
     </div>
 
     <div class="w3-margin-top">
-      <button class="w3-button w3-green" type="submit">Guardar</button>
-      <button id="cancelBtn" class="w3-button w3-grey" type="reset">Cancelar</button>
+      <button class="w3-button w3-green" type="submit">Guardar</button> <!--  boton para enviar el formulario.  Dispara el evento que captura
+studentsController.js. Y ese controlador después se encargará
+del envío de los datos a la API.-->
+      <button id="cancelBtn" class="w3-button w3-grey" type="reset">Cancelar</button>  <!--  limpia el formilario-->
     </div>
   </form>
 
-  <table class="w3-table-all w3-hoverable w3-card">
+  <table class="w3-table-all w3-hoverable w3-card"> <!--tabla de estudiantes. Cada fila se ve bien, se resalta al poner el mouse, tiene borde  -->
     <thead>
-      <tr class="w3-light-blue">
+      <tr class="w3-light-blue"> <!--  cabecera con fondo azul claro. define las columnas-->
         <th>Nombre</th>
         <th>Email</th>
         <th>Edad</th>
         <th>Acciones</th>
       </tr>
     </thead>
-    <tbody id="studentTableBody"></tbody>
+    <tbody id="studentTableBody"></tbody> <!--  cuerpo de la tabla, comienza vacio. Es generado por studentscontroller.js-->
   </table>
 
-  <footer class="w3-center w3-margin-top">
-    <a class="w3-btn w3-black" href="../index.html">Volver al Panel Principal</a>
+  <footer class="w3-center w3-margin-top"> <!--  pie de pagina-->
+    <a class="w3-btn w3-black" href="../index.html">Volver al Panel Principal</a> <!-- boton para volver al panel principal -->
   </footer>
   
 </body>
