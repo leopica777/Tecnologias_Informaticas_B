@@ -14,6 +14,12 @@
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
+
+/* Su función es recibir las peticiones del frontend, verificar qué módulo se solicita (como students),
+y luego redirigir la ejecución al archivo de rutas correspondiente para procesar la acción (listar, crear, actualizar o borrar datos).
+
+*/
+
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
