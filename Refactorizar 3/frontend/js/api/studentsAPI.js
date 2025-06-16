@@ -8,5 +8,8 @@
 *    Iteration   : 3.0 ( prototype )
 */
 
-import { createAPI } from './apiFactory.js';
-export const studentsAPI = createAPI('students');
+/*Es un módulo de frontend que se encarga de comunicar la app con el backend específicamente para el recurso “students”*/
+
+import { createAPI } from './apiFactory.js'; //importacion de funcion, Trae createAPI desde apiFactory donde esta definida 
+export const studentsAPI = createAPI('students'); //exportacion de objeto api. se crea un objeto Students API, y pasa el string students como nombre de modulo.
+
