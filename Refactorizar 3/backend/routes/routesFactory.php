@@ -33,7 +33,7 @@ function routeRequest($conn, $customHandlers = [], $prefix = 'handle')
 
     $handler = $handlers[$method];
 
-    if (is_callable($handler)) 
+    if (is_callable($handler)) //si puede ser llamado como funcion
     {
         $handler($conn);
     }
