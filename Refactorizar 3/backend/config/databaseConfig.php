@@ -9,14 +9,18 @@
 *    Iteration   : 3.0 ( prototype )
 */
 
-$host = "localhost";
-$user = "students_user_3";
-$password = "12345";
-$database = "students_db_3";
+/*Este archivo tiene la función de establecer la conexión con la
+base de datos MySQL.
+*/
 
-$conn = new mysqli($host, $user, $password, $database);
+$host = "localhost"; //Direccion del servidor de la base de datos
+$user = "students_user_3"; //Usuario Mysql con permisos en la base de datos 
+$password = "12345"; //Contraseña asociada al usuario
+$database = "students_db_3"; //Nombre de la base de datos
 
-if ($conn->connect_error) 
+$conn = new mysqli($host, $user, $password, $database); //Conexion con mysql
+
+if ($conn->connect_error)  //verificacion de error en la conexion
 {
     http_response_code(500);
     die(json_encode(["error" => "Database connection failed"]));
