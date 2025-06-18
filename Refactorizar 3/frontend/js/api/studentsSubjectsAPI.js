@@ -8,6 +8,13 @@
 *    Iteration   : 3.0 ( prototype )
 */
 
+/*
+Es similar a studensAPI.js, en los comentarios solo está
+explicitada la forma en que se puede cambiar la url de la API
+y cómo se puede extender otros comportamientos de API.
+*/
+
+
 import { createAPI } from './apiFactory.js';
 export const studentsSubjectsAPI = createAPI('studentsSubjects');
 
