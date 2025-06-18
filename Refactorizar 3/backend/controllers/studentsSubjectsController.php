@@ -9,6 +9,12 @@
 *    Iteration   : 3.0 ( prototype )
 */
 
+/*
+De igual comportamiento que los otros controladores. Se puede
+deducir desde:
+backend/controllers/studentsController.php
+*/
+
 require_once("./models/studentsSubjects.php");
 
 function handleGet($conn) 
