@@ -9,7 +9,7 @@
 *    Iteration   : 3.0 ( prototype )
 */
 
-function assignSubjectToStudent($conn, $student_id, $subject_id, $approved) //Asigna materia a estudiante
+function assignSubjectToStudent($conn, $student_id, $subject_id, $approved) //Crea nueva asignación (INSERT)
 {
     $sql = "INSERT INTO students_subjects (student_id, subject_id, approved) VALUES (?, ?, ?)"; //insert con placeholders ?? para evitar inyecciones sql
     $stmt = $conn->prepare($sql);
@@ -25,7 +25,8 @@ function assignSubjectToStudent($conn, $student_id, $subject_id, $approved) //As
 
 //Query escrita sin ALIAS resumidos (a mi me gusta más):
 function getAllSubjectsStudents($conn) ///recupera todas las relaciones estudiante materia. junto con nombres completos de estudiante y materia gracias al JOIN
-{
+{//Devuelve todas las relaciones con nombres completos
+
     $sql = "SELECT students_subjects.id,
                 students_subjects.student_id,
                 students_subjects.subject_id,
